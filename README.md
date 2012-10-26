@@ -1,13 +1,11 @@
 PostgreSQL MusicBrainz Collate Extension
 ========================================
 
-This extension provides collate support using the Unicode Collation
-Algorithm (1), as it is implemented by the International Components
-for Unicode library (2).
-
-[1] http://www.unicode.org/unicode/reports/tr10/
-[2] http://userguide.icu-project.org/collation
-
+This extension provides collate support using the
+[Unicode Collation Algorithm](http://www.unicode.org/unicode/reports/tr10/),
+as it is implemented by the
+[International Components for Unicode](http://userguide.icu-project.org/collation)
+library.
 
 
 Requirements
@@ -25,18 +23,18 @@ and icu-config are in your path.
 Installation
 ============
 
-  $ make
-  $ sudo make install
-  $ cd ..
+    $ make
+    $ sudo make install
+    $ cd ..
 
-  musicbrainz_db=# set search_path=musicbrainz
-  musicbrainz_db=# \i musicbrainz_collate.sql
-  CREATE FUNCTION
-  musicbrainz_db=# \q
+    musicbrainz_db=# set search_path=musicbrainz
+    musicbrainz_db=# \i musicbrainz_collate.sql
+    CREATE FUNCTION
+    musicbrainz_db=# \q
 
 You can also use InitDb.pl to install extensions, e.g. like this:
 
-  $ ./admin/InitDb.pl --install-extension=musicbrainz_collate.sql  --extension-schema=musicbrainz
+    $ ./admin/InitDb.pl --install-extension=musicbrainz_collate.sql  --extension-schema=musicbrainz
 
 Make sure your database user has sufficient permissions to create functions.
 See http://www.postgresql.org/docs/8.3/interactive/contrib.html for more
@@ -49,15 +47,15 @@ Usage
 This module provides a simple function to generate a sortkey from a postgresql
 TEXT column.
 
-test=> select * from unsorted order by musicbrainz_collate(column) limit 4;
- name
-------
- aaa
- AAA
- äää
- ÄÄÄ
-(4 rows)
-
+    test=> select * from unsorted order by musicbrainz_collate(column) limit 4;
+     name
+    ------
+     aaa
+     AAA
+     äää
+     ÄÄÄ
+    (4 rows)
+    
 
 License
 =======
