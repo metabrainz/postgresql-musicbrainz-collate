@@ -1,7 +1,7 @@
 MODULE_big = musicbrainz_collate
 OBJS = musicbrainz_collate.o
 DATA = musicbrainz_collate.sql uninstall_musicbrainz_collate.sql
-DOCS = README.musicbrainz_collate
+DOCS = README.musicbrainz_collate.md
 
 SHLIB_LINK = $(shell icu-config --ldflags)
 
