@@ -8,8 +8,37 @@ as it is implemented by the
 library.
 
 
+Usage
+-----
+
+This module provides a simple function to generate a sortkey from a postgresql
+TEXT column.
+
+    test=> select * from unsorted order by musicbrainz_collate(column) limit 4;
+     name
+    ------
+     AAA
+     ÄÄÄ
+     aaa
+     äää
+
+Note that older versions of ICU may give a different order:
+
+     name
+    ------
+     aaa
+     AAA
+     äää
+     ÄÄÄ
+
+Warning: Collate always assumes that input is UTF-8 encoded. This function is
+not very useful in databases with other encodings.
+
+Warning: Indexes based on this function should be rebuilt after upgrading ICU.
+
+
 Requirements
-============
+------------
 
 To use this extension you will need:
 
@@ -21,44 +50,27 @@ and icu-config are in your path.
 
 
 Installation
-============
+------------
 
-    $ make
-    $ sudo make install
-    $ cd ..
+To build and install this extension, simply run:
 
-    musicbrainz_db=# set search_path=musicbrainz
-    musicbrainz_db=# \i musicbrainz_collate.sql
-    CREATE FUNCTION
-    musicbrainz_db=# \q
+    % make
+    % sudo make install
 
-You can also use InitDb.pl to install extensions, e.g. like this:
+Then, to activate this extension in your database, run the SQL:
 
-    $ ./admin/InitDb.pl --install-extension=musicbrainz_collate.sql  --extension-schema=musicbrainz
+    CREATE EXTENSION musicbrainz_collate;
 
-Make sure your database user has sufficient permissions to create functions.
-See http://www.postgresql.org/docs/8.3/interactive/contrib.html for more
-information about using postgresql extensions.
+Databases using the old extension system can be upgraded with:
 
+    CREATE EXTENSION musicbrainz_collate FROM unpackaged;
 
-Usage
-=====
+If you run into problems with building, see [PostgreSQL wiki for
+troubleshooting](https://wiki.postgresql.org/wiki/Extension_build_troubleshooting)
 
-This module provides a simple function to generate a sortkey from a postgresql
-TEXT column.
-
-    test=> select * from unsorted order by musicbrainz_collate(column) limit 4;
-     name
-    ------
-     aaa
-     AAA
-     äää
-     ÄÄÄ
-    (4 rows)
-    
 
 License
-=======
+-------
 
 musicbrainz_collate, a postgresql extension to sort with the UCA.
 Copyright 2010  MetaBrainz Foundation
