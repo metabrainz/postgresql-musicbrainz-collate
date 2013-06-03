@@ -1,2 +1,3 @@
 musicbrainz_collate.o
 musicbrainz_collate.so
+sql/musicbrainz_collate--?.?.?.sql
