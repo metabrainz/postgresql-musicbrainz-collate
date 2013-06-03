@@ -1,0 +1,36 @@
+CREATE EXTENSION musicbrainz_collate;
+-- Warning: Older ICU versions (before 4.8 or 4.6) may give different results
+SELECT * FROM (VALUES('AAA'), ('äää'), ('ÄÄÄ'), ('aaa')) AS x(txt)
+    ORDER BY musicbrainz_collate(txt);
+ txt 
+-----
+ AAA
+ ÄÄÄ
+ aaa
+ äää
+(4 rows)
+
+SELECT musicbrainz_collate('foobar');
+               musicbrainz_collate                
+--------------------------------------------------
+ \x283f0f283f18283f18283f0b283f0a283f1b010a010a00
+(1 row)
+
+SELECT musicbrainz_collate('ľščťžýáí');
+                                    musicbrainz_collate                                     
+--------------------------------------------------------------------------------------------
+ \x283f15283f1c283f0c283f1d283f23283f22283f0a283f120186978697869786978697868d868d868d011400
+(1 row)
+
+SELECT musicbrainz_collate('');
+ musicbrainz_collate 
+---------------------
+ \x010100
+(1 row)
+
+SELECT musicbrainz_collate(null);
+ musicbrainz_collate 
+---------------------
+ 
+(1 row)
+
