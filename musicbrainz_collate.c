@@ -86,7 +86,7 @@ static int32_t
 sortkey_from_unicode (UChar *input, uint8_t **output)
 {
     UErrorCode status = U_ZERO_ERROR;
-    UCollator * collator = ucol_openFromShortString ("", FALSE, NULL, &status);
+    UCollator * collator = ucol_open ("", &status);
     int32_t size;
 
     if (icu_failure (status))
