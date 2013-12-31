@@ -1,0 +1,15 @@
+Source: postgresql-musicbrainz-collate
+Priority: extra
+Maintainer: Oliver Charles <oliver@musicbrainz.org>
+Build-Depends: debhelper (>= 8.0.0), postgresql-server-dev-9.1, libicu-dev
+Standards-Version: 3.9.2
+Section: database
+Homepage: http://musicbrainz.org/
+Vcs-Git: git://github.com/metabrainz/postgresql-musicbrainz-collate.git
+Vcs-Browser: http://github.com/metabrainz/postgresql-musicbrainz-collate
+
+Package: postgresql-musicbrainz-collate
+Section: database
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, postgresql-9.1, libicu48
+Description: MusicBrainz PostgreSQL collation extension

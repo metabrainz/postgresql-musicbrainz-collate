@@ -1,0 +1,19 @@
+postgresql-musicbrainz-collate (1.2-1) precise; urgency=low
+
+  * Use ucol_open to open a collator with saner sorting on newer versions of libicu
+
+ -- Oliver Charles <ollie@ocharles.org.uk>  Mon, 31 Dec 2013 14:25:00 +0000
+
+
+postgresql-musicbrainz-collate (1.1-1) precise; urgency=low
+
+  * Repackaged to use extensions.
+
+ -- Oliver Charles <ollie@ocharles.org.uk>  Tue, 30 Jul 2013 11:42:02 +0000
+
+
+postgresql-musicbrainz-collate (1.0-1) precise; urgency=low
+
+  * Initial release.
+
+ -- Oliver Charles <oliver@musicbrainz.org>  Fri, 26 Oct 2012 15:12:35 +0000
