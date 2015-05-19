@@ -9,6 +9,7 @@ REGRESS      = $(patsubst test/sql/%.sql,%,$(TESTS))
 REGRESS_OPTS = --inputdir=test
 MODULE_big   = musicbrainz_collate
 OBJS         = musicbrainz_collate.o
+PG_CPPFLAGS  = $(shell icu-config --cppflags)
 SHLIB_LINK   = $(shell icu-config --ldflags)
 PG_CONFIG    = pg_config
 PG91         = $(shell $(PG_CONFIG) --version | grep -qE " 8\.| 9\.0" && echo no || echo yes)
