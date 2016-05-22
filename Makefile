@@ -21,7 +21,6 @@ sql/$(EXTENSION)--$(EXTVERSION).sql: sql/$(EXTENSION).sql
 	cp $< $@
 
 DATA_built = sql/$(EXTENSION)--$(EXTVERSION).sql
-DATA = $(wildcard sql/*--*.sql)
 endif
 
 PGXS := $(shell $(PG_CONFIG) --pgxs)
