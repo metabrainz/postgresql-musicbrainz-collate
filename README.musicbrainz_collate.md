@@ -44,9 +44,10 @@ To use this extension you will need:
 
 - PostgreSQL version 8.3 or newer
 - libicu version 3.8 or newer
+- pkg-config
 
-You will need -dev packages installed for both of those, check that pg_config
-and icu-config are in your path.
+You will need -dev packages installed for libicu and PostgreSQL, check that
+pg_config is in your path.
 
 
 Installation
